@@ -1,0 +1,27 @@
+#untuk menghindari kesalahan atau ambigu ketika memanggil file atau folder di dalam folder /public
+Options -Multiviews
+
+
+#rwrite iyalah menulis ulang url di browser kita
+#menjalankan proses rewrite
+RewriteEngine On
+
+#RewriteCond (kondisi)
+#jika urlnya folder kita abaikan 
+# d artinya direktory(folder) dan f artinya file
+#berfungsi menghindari file atau folder yang sama dengan controller dan metod nantinya
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+
+
+#aturan menulis ulang url
+#menuliskan experesi reguler
+# ^ artinya membaca apapun yang ditulis mulai dari awal setelah folder public
+# . ambil karakter apapun
+# (.*)$ apapun karakternya sampai akhir/habil akan diambil kecuali enter
+# akan diarahkan ke index.php?url
+# $1 namanya placeholder
+# [L] atauran kurung siku L artinya jika rule sudah terpenuhi jangan jalankan rule setelah ini
+# jadi apapun yang di tulis di ^(.*)$ akan disimpan di $1
+RewriteRule ^(.*)$ index.php?url=$1 [L]
+

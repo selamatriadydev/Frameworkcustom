@@ -1,0 +1,3 @@
+#selamat folder itu tidak ada file index didalam maupun diluar folder yang ada didalam folder /app
+#maka jangan tampilkan isi foldernya atau block aksesnya
+Options -Indexes
